@@ -1,0 +1,124 @@
+// customer, sales, total sales, invoice, product sales 
+
+
+?Important
+Add A revenue and price field on all products 
+where
+revenue will large then price
+
+add revenue on the monthly sales data
+
+
+// invoice
+[
+  {
+    "id": 1,
+    "date": "01-02-2020",
+    "name": "Dwyane Clark",
+    "address": "123 Main St",
+    "email": "dwyane@gmail.com",
+    "phone": "5555",
+    "subTotal": "70",
+    "discount": "20",
+    "totalPrice": "50",
+    "product": [
+      {
+        "product": "demo1",
+        "category":"tablet",
+        "Piece": 50,
+        "quantity": 1,
+        "total": 50
+      },
+      {
+        "product": "demo2",
+        "category": "tablet",
+        "piece": 10,
+        "quantity": 2,
+        "total": 20
+      }
+    ]
+  }
+]
+,
+// get monthly or yearly sales data : Show total quantity and price also
+const salesData = {
+  "sales": [
+    {
+      "id": 1,
+      "date": "2022-04-18",
+      "quantity": 2,
+      "price": 10.99,
+      "revenue": 2
+    },
+    {
+      "id": 2,
+      "date": "2022-04-18",
+      "quantity": 3,
+      "price": 5.99
+    },
+    {
+      "id": 3,
+      "date": "2022-04-19",
+      "quantity": 1,
+      "price": 15.99
+    },
+    {
+      "id": 4,
+      "date": "2022-04-20",
+      "quantity": 2,
+      "price": 5.99
+    },
+    {
+      "id": 5,
+      "date": "2022-04-21",
+      "quantity": 1,
+      "price": 10.99
+    },
+    {
+      "id": 6,
+      "date": "2022-04-21",
+      "quantity": 4,
+      "price": 5.99
+    },
+    {
+      "id": 7,
+      "date": "2022-04-22",
+      "quantity": 3,
+      "price": 10.99
+    },
+    {
+      "id": 8,
+      "date": "2022-04-22",
+      "quantity": 2,
+      "price": 15.99
+    }
+  ]
+};
+
+//high selling product 
+const highSales = [
+  {
+    "genericName": "demo1",
+    "quantity": 20,
+    "totalSales": 500,
+    "revenue": 300
+  }
+]
+
+
+
+const jsonData = [
+  { "customer": "customer1", "date": "1 july" },
+  { "customer": "customer2", "date": "2 july" },
+  { "customer": "customer1", "date": "3 july" }
+];
+
+// Extract unique customer names
+const customers = [];
+jsonData.forEach(invoice => customers.push(invoice.customer));
+const uniqueCustomers = new Set(customers);
+
+// Get the number of unique customers
+const numCustomers = uniqueCustomers.size;
+
+console.log(numCustomers); // Output: 2
