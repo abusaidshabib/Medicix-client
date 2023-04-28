@@ -9,6 +9,8 @@ import Analytics from "../../Pages/Analytics/Analytics";
 import Invoice from "../../Pages/Invoice/Invoice";
 import Customer from "../../Pages/Customers/Customer";
 import ExpireProducts from "../../Pages/Product/ExpireProducts";
+import Product from "../../Pages/Product/Product";
+import EditCard from "../../Pages/Invoice/EditCard";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/products",
+        element: <Product></Product>
       },
       {
         path: "/product/edit-products",
@@ -42,6 +48,10 @@ const router = createBrowserRouter([
       {
         path: "/invoice",
         element: <Invoice></Invoice>,
+      },
+      {
+        path: "/invoice/cart-edit",
+        element: <EditCard></EditCard>
       },
       {
         path: "/customers",

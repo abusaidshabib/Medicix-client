@@ -73,10 +73,22 @@ export default {
         800: "#004c48",
         900: "#002624"
       },
+      red: {
+        100: "#ffcccc",
+        200: "#ff9999",
+        300: "#ff6666",
+        400: "#ff3333",
+        500: "#ff0000",
+        600: "#cc0000",
+        700: "#990000",
+        800: "#660000",
+        900: "#330000"
+      },
       "info": "#3ABFF8",
       "success": "#36D399",
       "warning": "#FBBD23",
       "error": "#F87272",
+      "white": "#fff"
     },
     fontFamily: {
       sans: ['Montserrat', "sans-serif"],

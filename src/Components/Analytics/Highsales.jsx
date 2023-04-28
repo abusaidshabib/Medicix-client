@@ -12,55 +12,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+const Highsales = ({data}) => {
 
-const Highsales = () => {
   return (
     <div>
-      <h4 className="text-neural-500">Product quantity</h4>
+      <h4 className="text-neural-500">Total Sales</h4>
       <ResponsiveContainer width="100%" height={150}>
         <LineChart
           width={400}
@@ -75,35 +31,45 @@ const Highsales = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="generic" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
-        </LineChart>
-      </ResponsiveContainer>
-      <h4 className="text-neural-500">Sales</h4>
-      <ResponsiveContainer width="100%" height={150}>
-        <LineChart
-          width={400}
-          height={150}
-          data={data}
-          syncId="anyId"
-          margin={{
-            top: 10,
-            right: 30,
-            left: 0,
-            bottom: 0,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Line type="monotone" dataKey="pv" stroke="#82ca9d" fill="#82ca9d" />
-          <Brush />
+          <Line
+            type="monotone"
+            dataKey="totalsales"
+            stroke="#8884d8"
+            fill="#8884d8"
+          />
         </LineChart>
       </ResponsiveContainer>
       <h4 className="text-neural-500">Revenue</h4>
+      <ResponsiveContainer width="100%" height={150}>
+        <LineChart
+          width={400}
+          height={150}
+          data={data}
+          syncId="anyId"
+          margin={{
+            top: 10,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="generic" />
+          <YAxis />
+          <Tooltip />
+          <Line
+            type="monotone"
+            dataKey="revenue"
+            stroke="#82ca9d"
+            fill="#82ca9d"
+          />
+          <Brush />
+        </LineChart>
+      </ResponsiveContainer>
+      <h4 className="text-neural-500">Quantity</h4>
       <ResponsiveContainer width="100%" height={150}>
         <AreaChart
           width={300}
@@ -118,10 +84,15 @@ const Highsales = () => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="generic" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="pv" stroke="#82ca9d" fill="#82ca9d" />
+          <Area
+            type="monotone"
+            dataKey="quantity"
+            stroke="#82ca9d"
+            fill="#82ca9d"
+          />
         </AreaChart>
       </ResponsiveContainer>
     </div>

@@ -1,124 +1,116 @@
-// customer, sales, total sales, invoice, product sales 
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { changeQuantity } from "../../features/cart/cartSlice";
+import { RiDeleteBinFill } from "react-icons/ri";
 
+const EditInvoice = () => {
+  const cart = useSelector((state) => state.cart.cart);
+  const dispatch = useDispatch();
 
-?Important
-Add A revenue and price field on all products 
-where
-revenue will large then price
+  const handleChange = (product) => {
+    dispatch(changeQuantity(product));
+  };
 
-add revenue on the monthly sales data
-
-
-// invoice
-[
-  {
-    "id": 1,
-    "date": "01-02-2020",
-    "name": "Dwyane Clark",
-    "address": "123 Main St",
-    "email": "dwyane@gmail.com",
-    "phone": "5555",
-    "subTotal": "70",
-    "discount": "20",
-    "totalPrice": "50",
-    "product": [
-      {
-        "product": "demo1",
-        "category":"tablet",
-        "Piece": 50,
-        "quantity": 1,
-        "total": 50
-      },
-      {
-        "product": "demo2",
-        "category": "tablet",
-        "piece": 10,
-        "quantity": 2,
-        "total": 20
-      }
-    ]
-  }
-]
-,
-// get monthly or yearly sales data : Show total quantity and price also
-const salesData = {
-  "sales": [
-    {
-      "id": 1,
-      "date": "2022-04-18",
-      "quantity": 2,
-      "price": 10.99,
-      "revenue": 2
-    },
-    {
-      "id": 2,
-      "date": "2022-04-18",
-      "quantity": 3,
-      "price": 5.99
-    },
-    {
-      "id": 3,
-      "date": "2022-04-19",
-      "quantity": 1,
-      "price": 15.99
-    },
-    {
-      "id": 4,
-      "date": "2022-04-20",
-      "quantity": 2,
-      "price": 5.99
-    },
-    {
-      "id": 5,
-      "date": "2022-04-21",
-      "quantity": 1,
-      "price": 10.99
-    },
-    {
-      "id": 6,
-      "date": "2022-04-21",
-      "quantity": 4,
-      "price": 5.99
-    },
-    {
-      "id": 7,
-      "date": "2022-04-22",
-      "quantity": 3,
-      "price": 10.99
-    },
-    {
-      "id": 8,
-      "date": "2022-04-22",
-      "quantity": 2,
-      "price": 15.99
-    }
-  ]
+    return (
+      <div className="relative overflow-x-auto w-full bg-secondary-700 rounded-md p-6">
+        <table className="table-auto text-left w-full text-neural-400 ">
+          <thead className="text-base tracking-widest text-gray-700 uppercase bg-secondary-600">
+            <tr className="border-x-secondary-500 p-5">
+              <th className="px-6 py-3 font-medium">S.N.</th>
+              <th className="px-6 py-3 font-medium">Medicine Info</th>
+              <th className="px-6 py-3 font-medium">quantity</th>
+              <th className="px-6 py-3 font-medium">total</th>
+              <th className="px-6 py-3 font-medium">action</th>
+            </tr>
+          </thead>
+          <tbody className="">
+            {cart?.map((product, index) => (
+              <tr key={product._id} className="border-b hover:bg-secondary-500">
+                <td className="px-6 py-3 font-normal">{index + 1}</td>
+                <td className="px-6 py-3 font-normal">
+                  <p>
+                    <b>Brand Name: </b>
+                    {product?.brand}
+                  </p>
+                  <p>
+                    <b>Generic Name: </b>
+                    {product?.generic}
+                  </p>
+                  <p>
+                    <b>Use For: </b>
+                    {product?.useFor}
+                  </p>
+                  <p>
+                    <b>Strength: </b>
+                    {product?.strength.split("/")[0]}
+                  </p>
+                  <p>
+                    <b>Manufacturer: </b>
+                    {product?.manufacturer}
+                  </p>
+                  <p>
+                    <b>ExpireDate: </b>
+                    {product?.lastdate}
+                  </p>
+                </td>
+                <td className="flex items-center h-60">
+                  <div className="">
+                    <input
+                      onChange={(e) =>
+                        handleChange({
+                          ...product,
+                          quantity: parseInt(e.target.value),
+                        })
+                      }
+                      className="bg-primary-500 p-2 min-w-20 min-h-20 w-20 h-20 rounded-full outline-none text-xl text-center"
+                      type="number"
+                      name=""
+                      id=""
+                      min="1"
+                      max={product?.totalProducts}
+                      defaultValue={product?.quantity}
+                    />
+                  </div>
+                </td>
+                <td className="px-6 py-3 font-normal">
+                  {product?.quantity * product?.price}
+                </td>
+                <td className="px-6 py-3 font-normal" onClick={dispatch(changeQuantity(product._id))}>
+                  <RiDeleteBinFill className="hover:text-accent-400 text-2xl" />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
 };
 
-//high selling product 
-const highSales = [
-  {
-    "genericName": "demo1",
-    "quantity": 20,
-    "totalSales": 500,
-    "revenue": 300
-  }
-]
+export default EditInvoice;
 
-
-
-const jsonData = [
-  { "customer": "customer1", "date": "1 july" },
-  { "customer": "customer2", "date": "2 july" },
-  { "customer": "customer1", "date": "3 july" }
-];
-
-// Extract unique customer names
-const customers = [];
-jsonData.forEach(invoice => customers.push(invoice.customer));
-const uniqueCustomers = new Set(customers);
-
-// Get the number of unique customers
-const numCustomers = uniqueCustomers.size;
-
-console.log(numCustomers); // Output: 2
+  // if (cart.length === 0) {
+  //   return (
+  //     <div
+  //       className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+  //       role="alert"
+  //     >
+  //       <strong className="font-bold">You don't add any product! </strong>
+  //       <span className="block sm:inline">
+  //         Go to product search and add product quantity. It will automatically
+  //         add on cart
+  //       </span>
+  //       <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+  //         <svg
+  //           className="fill-current h-6 w-6 text-red-500"
+  //           role="button"
+  //           xmlns="http://www.w3.org/2000/svg"
+  //           viewBox="0 0 20 20"
+  //         >
+  //           <title>Close</title>
+  //           <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+  //         </svg>
+  //       </span>
+  //     </div>
+  //   );
+  // } else {
