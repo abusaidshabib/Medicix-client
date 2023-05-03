@@ -9,7 +9,6 @@ const Customer = () => {
   useTitle("Customers");
 
   const {isError, isFetching, data, isLoading, isSuccess } = useGetMembersQuery();
-  console.log(data?.data)
 
   return (
     <div className="relative overflow-x-auto w-full bg-secondary-700 rounded-md p-6">

@@ -12,7 +12,6 @@ const Product = () => {
   const handleSearch = (e) => {
     setSearch(e);
     refetch();
-    console.log(search);
   };
 
   return (

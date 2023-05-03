@@ -28,7 +28,7 @@ const Menu = () => {
   };
 
   return (
-    <div className="w-64 min-h-screen bg-secondary-700 fixed">
+    <div className="w-64 max-h-screen bg-secondary-700 sticky left-0 top-0">
       <div className="px-6 pt-8">
         <Link to="/" className="text-center">
           <p className="text-accent-400 tracking-wider text-3xl font-cursive">

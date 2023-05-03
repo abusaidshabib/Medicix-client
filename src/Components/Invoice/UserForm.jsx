@@ -34,6 +34,8 @@ const UserForm = () => {
       total: 0,
       products: [],
     };
+
+    console.log(data)
     dispatch(createInvoice(data));
   };
 

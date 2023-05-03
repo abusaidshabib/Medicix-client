@@ -15,15 +15,18 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     createInvoice: (state, action) => {
-      const subTotal = state.cart.reduce((prev, current) => {
-        return prev + current.subTotal;
-      }, 0);
-
       const newData = state.cart.map((product) => {
         return { ...product };
       });
+      let amount = 0;
+      let total = 0;
+      newData.forEach((item) => {
+        amount += item.quantity;
+        total += item.quantity * item.price;
+      })
 
       const temp = action.payload;
+
 
       const invoiceObj = {
         date: temp.date,
@@ -31,14 +34,14 @@ const cartSlice = createSlice({
         address: temp.address,
         email: temp.email,
         phone: temp.phone,
-        subTotal: subTotal,
+        subTotal: total,
         discount: temp.discount,
-        total: subTotal - parseInt(temp.discount),
+        total: total - parseInt(temp.discount),
         products: newData,
       };
-      console.log(invoiceObj);
       localStorage.setItem("invoice", JSON.stringify(invoiceObj));
     },
+
     changeQuantity: (state, action) => {
       action.payload.totalProducts < action.payload.quantity
         ? (action.payload["quantity"] = action.payload.totalProducts)
@@ -77,3 +80,8 @@ const cartSlice = createSlice({
 export const { changeQuantity, createInvoice, removeFromCart } =
   cartSlice.actions;
 export default cartSlice.reducer;
+
+
+      // const subTotal = state.cart.reduce((prev, current) => {
+      //   return prev + current.subTotal;
+      // }, 0);

@@ -7,7 +7,6 @@ const ExpireProducts = () => {
 
   const { isFetching, isLoading, isError, isSuccess, error, data } =
     useGetExpiredMedicinesQuery();
-  console.log(data);
 
   if (isLoading && isFetching) {
     return (

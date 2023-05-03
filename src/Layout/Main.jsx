@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <div className="bg-primary-800 min-h-screen min-w-screen flex">
       <Menu></Menu>
-      <div className="w-full p-3 ml-64">
+      <div className="w-full p-3">
         <TopMenu></TopMenu>
         <Outlet></Outlet>
       </div>

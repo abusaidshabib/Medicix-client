@@ -14,8 +14,6 @@ const SearchProduct = ({
   const dispatch = useDispatch();
 
   const handleChange = (product) => {
-    console.log(product?.price)
-    console.log(product?.quantity)
     dispatch(changeQuantity(product));
   };
 

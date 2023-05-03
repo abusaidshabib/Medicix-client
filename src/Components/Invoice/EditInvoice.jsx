@@ -6,9 +6,6 @@ import { RiDeleteBinFill } from "react-icons/ri";
 const EditInvoice = () => {
   const cart = useSelector((state) => state.cart.cart);
   const invoice = useSelector((state) => state.cart.invoice);
-
-  console.log(invoice)
-
   const dispatch = useDispatch();
 
   const handleChange = (product) => {
