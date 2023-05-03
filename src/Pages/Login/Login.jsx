@@ -1,13 +1,20 @@
 import React from "react";
 import image from "../../assets/login.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { googlePopUp, loginUser } from "../../features/auth/authSlice";
 import useTitle from "../../Hooks/UseTitle/UseTitle";
 
 const Login = () => {
+
+    const navigate = useNavigate();
+    const replaceNav = useSelector((state) => state.auth.navigate);
+
+    if (replaceNav) {
+      navigate("/", { replace: true });
+    }
 
   useTitle("Login");
 

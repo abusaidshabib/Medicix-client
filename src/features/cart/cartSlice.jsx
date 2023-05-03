@@ -7,7 +7,7 @@ const initialState = {
   invoice: localStorage.getItem("invoice")
     ? JSON.parse(localStorage.getItem("invoice"))
     : [],
-  subTotal: 0,
+  subTotal: 0
 };
 
 const cartSlice = createSlice({
@@ -80,8 +80,3 @@ const cartSlice = createSlice({
 export const { changeQuantity, createInvoice, removeFromCart } =
   cartSlice.actions;
 export default cartSlice.reducer;
-
-
-      // const subTotal = state.cart.reduce((prev, current) => {
-      //   return prev + current.subTotal;
-      // }, 0);

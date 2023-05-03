@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(auth, (user) =>{
       if(user){
-        dispatch(setUser(user.email))
+        dispatch(setUser(JSON.parse(JSON.stringify(user)))); //non serializable value to serializable value
       }
     } )
   }, [])

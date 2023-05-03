@@ -12,6 +12,8 @@ const initialState = {
   isLoading: true,
   isError: false,
   error: "",
+  navigate: false,
+  user: {},
 };
 
 export const createUser = createAsyncThunk(
@@ -50,8 +52,8 @@ const authSlice = createSlice({
       state.email = "";
     },
     setUser: (state, {payload}) => {
-
-      state.email = payload;
+      state.user = payload;
+      state.email = payload.email;
       state.isLoading = false;
 
     }
@@ -68,6 +70,7 @@ const authSlice = createSlice({
         state.email = payload;
         state.isError = false;
         state.error = "";
+        state.navigate = true;
       })
       .addCase(createUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -85,6 +88,7 @@ const authSlice = createSlice({
         state.email = payload;
         state.isError = false;
         state.error = "";
+        state.navigate = true;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -102,6 +106,7 @@ const authSlice = createSlice({
         state.email = payload;
         state.isError = false;
         state.error = "";
+        state.navigate = true;
       })
       .addCase(googlePopUp.rejected, (state, action) => {
         state.isLoading = false;

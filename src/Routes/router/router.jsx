@@ -11,51 +11,101 @@ import Customer from "../../Pages/Customers/Customer";
 import ExpireProducts from "../../Pages/Product/ExpireProducts";
 import Product from "../../Pages/Product/Product";
 import EditCard from "../../Pages/Invoice/EditCard";
+import PrivateRouter from "../PrivateRouter/PrivateRouter";
+import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
+    element: (
+      <PrivateRouter>
+        <Main></Main>
+      </PrivateRouter>
+    ),
     children: [
       {
+        path: "*",
+        element: <ErrorPage></ErrorPage>
+      },
+      {
         path: "/",
-        element: <Dashboard></Dashboard>,
+        element: (
+          <PrivateRouter>
+            <Dashboard></Dashboard>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: (
+          <PrivateRouter>
+            <Dashboard></Dashboard>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/products",
-        element: <Product></Product>
+        element: (
+          <PrivateRouter>
+            <Product></Product>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/product/edit-products",
-        element: <EditProducts></EditProducts>,
+        element: (
+          <PrivateRouter>
+            <EditProducts></EditProducts>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/product/add-product",
-        element: <AddProducts></AddProducts>,
+        element: (
+          <PrivateRouter>
+            <AddProducts></AddProducts>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/product/expired",
-        element: <ExpireProducts></ExpireProducts>
+        element: (
+          <PrivateRouter>
+            <ExpireProducts></ExpireProducts>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/analytics",
-        element: <Analytics></Analytics>,
+        element: (
+          <PrivateRouter>
+            <Analytics></Analytics>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/invoice",
-        element: <Invoice></Invoice>,
+        element: (
+          <PrivateRouter>
+            <Invoice></Invoice>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/invoice/cart-edit",
-        element: <EditCard></EditCard>
+        element: (
+          <PrivateRouter>
+            <EditCard></EditCard>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/customers",
-        element: <Customer></Customer>,
+        element: (
+          <PrivateRouter>
+            <Customer></Customer>
+          </PrivateRouter>
+        ),
       },
     ],
   },

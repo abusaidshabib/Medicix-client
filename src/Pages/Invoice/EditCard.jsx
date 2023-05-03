@@ -11,7 +11,7 @@ const EditCard = () => {
     <div>
       <UserForm></UserForm>
       <EditInvoice></EditInvoice>
-      <p className='text-warning text-center text-3xl py-5'>[Please fill the form after Changing product quantity or delete]</p>
+      <p className='text-warning text-center text-3xl py-5'>[Please fill the form after Changing product quantity or delete. Then reload]</p>
     </div>
   );
 };

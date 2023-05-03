@@ -18,6 +18,7 @@ const Menu = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const invoice = useSelector((state) => state.cart.cart);
+  const condition = useSelector((state) => state.condition.leftMenu);
 
   const { email } = useSelector((state) => state.auth);
 
@@ -27,8 +28,11 @@ const Menu = () => {
     });
   };
 
+  const unActive = "hidden";
+  const active = "w-64 max-h-screen bg-secondary-700 sticky left-0 top-0";
+
   return (
-    <div className="w-64 max-h-screen bg-secondary-700 sticky left-0 top-0">
+    <div className={condition ? active : unActive}>
       <div className="px-6 pt-8">
         <Link to="/" className="text-center">
           <p className="text-accent-400 tracking-wider text-3xl font-cursive">
