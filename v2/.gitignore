@@ -22,9 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-
-.env.local
-
-v1/node_modules/
-v2/node_modules/
